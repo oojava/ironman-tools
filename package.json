@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "osrs-api": "^0.1.2",
+    "osrs-wrapper": "^1.0.4",
     "socket.io": "^2.1.1"
   }
 }

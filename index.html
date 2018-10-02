@@ -2,13 +2,30 @@
 <html lang="en" dir="ltr">
   <head>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel="icon" href="img/logo.png">
     <script type="text/javascript">
-        var socket = io();
+        $(function(){
+          var socket = io();
+          $('form').submit(function() {
+            socket.emit('nameLookup', $('#rsn').val());
+          });
+          socket.on('statsRecieved', function(msg){
+            console.log("statsRecieved: " + msg);
+            $('#response').append($('<li>').text(msg));
+          });
+        });
+
     </script>
     <meta charset="utf-8">
     <title>Basic page</title>
   </head>
   <body>
+
+    <ul id='response'></ul>
+    <form action="">
+      <input id="rsn"/><button>Check</button>
+    </form>
 
     This is the basic setup
   </body>
