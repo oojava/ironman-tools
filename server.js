@@ -54,8 +54,9 @@ io.on('connection', function(socket){
 				console.log(player);
 //				console.log(player["Skills"]);
         for(i=0; i < skill.length; i++){
-				  io.emit('statsRecieved', player["Skills"][skill[i]].level);
+				  io.emit('statsRecieved', i + " " + player["Skills"][skill[i]].level + " " + player["Skills"][skill[i]].xp);
         }
+				io.emit('statsRecieved', 24 + " " + player["Skills"][skill[0]].level + " " + player["Skills"][skill[0]].xp);
 				//io.emit('statsRecieved', player["Skills"]['Attack'].level);
 
 				io.emit('statsRecieved',"test");
