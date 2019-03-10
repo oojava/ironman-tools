@@ -6,29 +6,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <link rel="icon" href="img/logo.png">
-    <script type="text/javascript">
-        $(function(){
-          var socket = io();
-          $('form').submit(function() {
-            $('#check').addClass("is-loading");
-            socket.emit('nameLookup', $('#rsn').val());
-          });
-          $('#check').click(function(){
-            $('#check').addClass("is-loading");
-            socket.emit('nameLookup', $('#rsn').val());
-          });
-          function lookupPlayer(){
-            $('#check').addClass("is-loading");
-            socket.emit('nameLookup', $('#rsn').val());
-          }
-          socket.on('statsRecieved', function(msg){
-            console.log("statsRecieved: " + msg);
-            $('#response').append($('<li>').text(msg));
-            $('#check').removeClass("is-loading");
-          });
-        });
-
-    </script>
+    <script src="js/ironman.js"></script>
     <meta charset="utf-8">
     <title>Basic page</title>
   </head>
