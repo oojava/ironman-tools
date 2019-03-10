@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <link rel="icon" href="img/logo.png">
@@ -8,23 +10,35 @@
         $(function(){
           var socket = io();
           $('form').submit(function() {
+            $('#check').addClass("is-loading");
             socket.emit('nameLookup', $('#rsn').val());
           });
+          $('#check').click(function(){
+            $('#check').addClass("is-loading");
+            socket.emit('nameLookup', $('#rsn').val());
+          });
+          function lookupPlayer(){
+            $('#check').addClass("is-loading");
+            socket.emit('nameLookup', $('#rsn').val());
+          }
           socket.on('statsRecieved', function(msg){
             console.log("statsRecieved: " + msg);
             $('#response').append($('<li>').text(msg));
+            $('#check').removeClass("is-loading");
           });
         });
 
     </script>
     <meta charset="utf-8">
-    <title>Test Basic page</title>
+    <title>Basic page</title>
   </head>
   <body>
 
+    <progress class="progress" value="20" max="100">20%</progress>  
+
     <ul id='response'></ul>
-    <form action="">
-      <input class="input" type="text" id="rsn"/><button>Check</button>
+    <form onSubmit="return false">
+      <input class="input" type="text" id="rsn"/><button type="button" id="check" class="button">Check</button>
     </form>
 
     This is the basic setup

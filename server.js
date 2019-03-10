@@ -20,7 +20,7 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
 	console.log("client connected");
 	socket.on('nameLookup', function (msg) {
-			io.emit('statsRecieved', "sent");
+			//io.emit('statsRecieved', "sent");
 			console.log("the name is: " + msg);
 			osrsHs.hiscores.getPlayer(msg).then(player=> {
 				console.log(player);
