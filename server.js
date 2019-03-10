@@ -8,30 +8,30 @@ var osrsHs = require("osrs-wrapper");
 //const {constants, hiscores} = require('osrs-api');
 
 var skill = [
-  'Overall',
-  'Attack',
-  'Defence',
-  'Strength',
-  'Hitpoints',
-  'Ranged',
-  'Prayer',
-  'Magic',
-  'Cooking',
-  'Woodcutting',
-  'Fletching',
-  'Fishing',
-  'Firemaking',
-  'Crafting',
-  'Smithing',
-  'Mining',
-  'Herblore',
-  'Agility',
-  'Thieving',
-  'Slayer',
-  'Farming',
-  'Runecrafting',
-  'Hunter',
-  'Construction'
+/*0*/  'Overall',
+/*1*/  'Attack',
+/*2*/  'Defence',
+/*3*/  'Strength',
+/*4*/  'Hitpoints',
+/*5*/  'Ranged',
+/*6*/  'Prayer',
+/*7*/  'Magic',
+/*8*/  'Cooking',
+/*9*/  'Woodcutting',
+/*10*/  'Fletching',
+/*11*/  'Fishing',
+/*12*/  'Firemaking',
+/*13*/  'Crafting',
+/*14*/  'Smithing',
+/*15*/  'Mining',
+/*16*/  'Herblore',
+/*17*/  'Agility',
+/*18*/  'Thieving',
+/*19*/  'Slayer',
+/*20*/  'Farming',
+/*21*/  'Runecrafting',
+/*22*/  'Hunter',
+/*23*/  'Construction'
 ];
 
 
@@ -52,7 +52,6 @@ io.on('connection', function(socket){
 			console.log("the name is: " + msg);
 			osrsHs.hiscores.getPlayer(msg).then(player=> {
 				console.log(player);
-//				console.log(player["Skills"]);
         for(i=0; i < skill.length; i++){
 				  io.emit('statsRecieved', i + " " + player["Skills"][skill[i]].level + " " + player["Skills"][skill[i]].xp);
         }
