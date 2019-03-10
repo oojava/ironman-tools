@@ -7,6 +7,34 @@ var path = require('path');
 var osrsHs = require("osrs-wrapper");
 //const {constants, hiscores} = require('osrs-api');
 
+var skill = [
+  'Overall',
+  'Attack',
+  'Defence',
+  'Strength',
+  'Hitpoints',
+  'Ranged',
+  'Prayer',
+  'Magic',
+  'Cooking',
+  'Woodcutting',
+  'Fletching',
+  'Fishing',
+  'Firemaking',
+  'Crafting',
+  'Smithing',
+  'Mining',
+  'Herblore',
+  'Agility',
+  'Thieving',
+  'Slayer',
+  'Farming',
+  'Runecrafting',
+  'Hunter',
+  'Construction'
+];
+
+
 app.use(express.static(__dirname + '/node_modules'));
 //app.use(express.static(path.join(__dirname,'public')));
 app.use(express.static('public'));
@@ -25,7 +53,11 @@ io.on('connection', function(socket){
 			osrsHs.hiscores.getPlayer(msg).then(player=> {
 				console.log(player);
 //				console.log(player["Skills"]);
-				io.emit('statsRecieved', player["Skills"]['Attack'].level);
+        for(i=0; i < skill.length; i++){
+				  io.emit('statsRecieved', player["Skills"][skill[i]].level);
+        }
+				//io.emit('statsRecieved', player["Skills"]['Attack'].level);
+
 				io.emit('statsRecieved',"test");
 			});
 	});
