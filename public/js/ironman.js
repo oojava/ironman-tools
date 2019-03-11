@@ -15,6 +15,7 @@ $(function(){
 
   function updateStat(statId, level, xp){
     $('#skill'+statId).text(level);   
+
   }
 
   socket.on('statsRecieved', function(msg){
